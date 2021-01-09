@@ -29,3 +29,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    Manager\Application\Appointment\:
+        resource: '../src/Manager/Application/Appointment/'
+        tags: ['controller.service_arguments']
+
+    Manager\Application\Appointment\Query\:
+        resource: '../src/Manager/Application/Appointment/Query'
+        autowire: false
+        autoconfigure: false
+
+    App\Controller\HomeController:
+        arguments:
+            - '@Manager\Application\Appointment\GetAppointments'
+        tags: ['controller.service_arguments']

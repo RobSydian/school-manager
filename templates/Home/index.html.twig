@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>APPOINTMENTS</h1>
+    <h2>You have the following appointments:</h2>
+    <div style="display: flex; justify-content: space-around;">
+        {% for appt in appointments %}
+            <div style="padding: 5px 10px; border: 1px solid black; display: flex; flex-direction: column;">
+                <p>{{ appt.date().format('Y-m-d') }}</p>
+                <p>{{ appt.center() }}</p>
+                <p>{{ appt.patientName() }}</p>
+                <p>{{ appt.doctorName() }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock body %}
